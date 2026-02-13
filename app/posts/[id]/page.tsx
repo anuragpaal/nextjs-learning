@@ -19,3 +19,13 @@ export default async function PostDetail({
     </div>
   );
 }
+
+export async function generateMetadata({ params }: any) {
+  const { id } = await params;
+
+  return {
+    title: `Post ${id}`,
+    description: `Details of post ${id}`,
+  };
+}
+

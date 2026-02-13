@@ -1,42 +1,48 @@
+
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 export default function Home() {
-  const [posts, setPosts] = useState<any[]>([]);
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((data) => setPosts(data.slice(0, 10)));
-  }, []);
-
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase()),
-  );
+  const router = useRouter();
 
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-4">Search Posts 🔍</h1>
+    <main className="flex flex-col items-center justify-center h-screen gap-4">
+      <h1 className="text-3xl font-bold">Day 6 — useRouter 🚀</h1>
 
-      <input
-        type="text"
-        placeholder="Search posts..."
-        className="border p-2 mb-4 w-full"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        <img
+        src="https://picsum.photos/300/500"
+        alt="demo"
+        width={300}
+        height={200}
       />
 
-      {filteredPosts.length === 0 ? (
-        <p>No data found</p>
-      ) : (
-        filteredPosts.map((post) => (
-          <p key={post.id} className="mb-2">
-            {post.title}
-          </p>
-        ))
-      )}
-    </div>
+        <h2>Next Image ✅</h2>
+      <Image
+        src="https://picsum.photos/800/500"
+        width={800}
+        height={500}
+        alt="optimized"
+      />
+
+      <button
+        onClick={() => router.push("/posts")}
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Go to Posts
+      </button>
+
+      <button
+        onClick={() => router.push("/contact?source=home")
+
+        }
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Go to Contact
+      </button>
+
+    </main>
   );
 }

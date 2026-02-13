@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Posts Page",
+  description: "Browse latest posts",
+};
+
+
 async function getPosts() {
   await new Promise((res) => setTimeout(res, 2000));
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
