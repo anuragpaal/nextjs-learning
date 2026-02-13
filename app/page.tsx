@@ -1,51 +1,29 @@
 "use client";
 
-import Link from "next/link";
-
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
+  const router = useRouter();
+
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1 className="text-3xl font-bold">Learning Next.js Day 1 🚀</h1>
-
-      <div className="flex gap-4 mt-4">
-        <Link href="/profile" className="text-blue-500 underline">
-          Go to Profile
-        </Link>
-
-        <Link href="/contact" className="text-blue-500 underline">
-          Go to Contact
-        </Link>
-
-          <Link href="/about" className="text-blue-500 underline">
-          Go to About
-        </Link>
-      </div>
-
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="border p-2 rounded"
-      />
-
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="border p-2 rounded"
-      />
+      <h1 className="text-3xl font-bold">
+        Day 6 — useRouter 🚀
+      </h1>
 
       <button
+        onClick={() => router.push("/posts")}
         className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={() => alert(`Hello ${name}`)}
       >
-        Submit
+        Go to Posts
+      </button>
+
+       <button
+        onClick={() => router.push("/contact?source=home")}
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Go to Contact
       </button>
     </main>
   );
