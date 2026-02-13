@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useState } from "react";
 
 export default function Home() {
@@ -8,6 +10,20 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-4">
       <h1 className="text-3xl font-bold">Learning Next.js Day 1 🚀</h1>
+
+      <div className="flex gap-4 mt-4">
+        <Link href="/profile" className="text-blue-500 underline">
+          Go to Profile
+        </Link>
+
+        <Link href="/contact" className="text-blue-500 underline">
+          Go to Contact
+        </Link>
+
+          <Link href="/about" className="text-blue-500 underline">
+          Go to About
+        </Link>
+      </div>
 
       <input
         type="text"
