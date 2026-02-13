@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 async function getPosts() {
+  await new Promise((res) => setTimeout(res, 2000));
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
 }
